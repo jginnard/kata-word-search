@@ -1,0 +1,6 @@
+{
+    "simpleWordSearch": {
+        "inputFile": "./data/wordSearch1.csv",
+        "words": ["BONES", "KHAN", "KIRK", "SCOTTY", "SPOCK", "SULU", "UHURA"]
+    }
+}

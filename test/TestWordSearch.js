@@ -3,36 +3,22 @@ const assert = require('chai').assert;
 /**
  * Test Setup
  */
+const testConfig = require('../test/config.json').simpleWordSearch;
 const WordSearch = require('../models/WordSearch');
-var wordSearch = new WordSearch('./data/wordSearch1.csv');
-
+var wordSearch = new WordSearch(testConfig.inputFile);
 
 /**
  * Run Tests
  */
-describe('Read File Test', function(){
-    describe('Read Words From First Line', function() {
-        it('Word 1', function(){
-            assert.equal(wordSearch.words[0], "BONES");
+describe('Read from file test', function(){
+    describe('Read words from first line', function() {
+        it('Number of words is equal to expected.', function(){
+            assert.equal(wordSearch.words.length, testConfig.words.length);
         });
-        it('Word 2', function(){
-            assert.equal(wordSearch.words[1], "KHAN");
+        it('All words match those expected.', function(){
+            testConfig.words.forEach(function(word, i){
+                assert.equal(wordSearch.words[i], word);
+            });
         });
-        it('Word 3', function(){
-            assert.equal(wordSearch.words[2], "KIRK");
-        });
-        it('Word 4', function(){
-            assert.equal(wordSearch.words[3], "SCOTTY");
-        });
-        it('Word 5', function(){
-            assert.equal(wordSearch.words[4], "SPOCK");
-        });
-        it('Word 6', function(){
-            assert.equal(wordSearch.words[5], "SULU");
-        });
-        it('Word 7', function(){
-            assert.equal(wordSearch.words[6], "UHURA");
-        });
-
-    })
+    });
 });

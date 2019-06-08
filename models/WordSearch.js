@@ -30,8 +30,6 @@ class WordSearch {
             return row.split(',');
         })
         this.words = data[0];
-        this.grid = data.slice(1);
-        
     }
 }
 
