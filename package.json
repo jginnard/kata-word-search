@@ -1,0 +1,26 @@
+{
+  "name": "wordsearch",
+  "version": "1.0.0",
+  "description": "Word Search Kata to solve word searches.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jginnard/kata-word-search.git"
+  },
+  "author": "Jeremy Ginnard",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jginnard/kata-word-search/issues"
+  },
+  "homepage": "https://github.com/jginnard/kata-word-search#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
+  }
+}
