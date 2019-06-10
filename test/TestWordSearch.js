@@ -35,7 +35,7 @@ describe('Read from file test', function() {
     });
 });
 describe('Find words in the grid test', function() {
-    describe('Test finderUtil function findNextLetter', function() {
+    describe('finderUtil function findNextLetter', function() {
         it('Given the starting point of a word and a direction, next letter position is returned', function() {
             testConfig.words.forEach(function(word) {
                 let position = testConfig.wordLocations[word][0],
@@ -53,6 +53,16 @@ describe('Find words in the grid test', function() {
                 letter = '*'; //Something that it won't find.
                 assert.equal(finderUtil.findNextLetter(wordSearch.grid, position, direction, letter), null);
             });
+        });
+    });
+    describe('finderUtil function findLetters', function() {
+        it('Given the starting position of a word, return the positions of all the letters', function() {
+            testConfig.words.forEach(function(word) {
+                expect(finderUtil.findLetters(wordSearch.grid, testConfig.wordLocations[word][0], word)).to.eql(testConfig.wordLocations[word]);
+            });
+        });
+        it('If word can not be found at the given start position, null is returned', function(){
+            assert.equal(finderUtil.findLetters(wordSearch.grid, {x:0,y:0}, '*****'), null);
         });
     });
 });

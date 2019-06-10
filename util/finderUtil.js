@@ -1,6 +1,6 @@
-const DIRECTIONS = [{x:0,y:1},{x:1,y:1},{x:1,y:0},{x:1,y:-1},{x:0,y:-1},{x:-1,y:-1},{x:-1,y:0},{x:-1,y:-1}];
+const DIRECTIONS = [{x:0,y:1},{x:1,y:1},{x:1,y:0},{x:1,y:-1},{x:0,y:-1},{x:-1,y:-1},{x:-1,y:0},{x:-1,y:1}];
 
-module.exports = {
+let finderUtil = {
     /**
      * Find the next letter of the word
      * @param {Array} grid - the grid to search
@@ -19,5 +19,20 @@ module.exports = {
             }
         }
         return null;
+    },
+    findLetters: function(grid, startPosition, word) {
+        for(var i=0; i < DIRECTIONS.length; i++){
+            let letterLocations = [];
+            let position = startPosition;
+            while(position != null) {
+                letterLocations.push(position);
+                if (letterLocations.length === word.length) {
+                    return letterLocations;
+                }
+                position = finderUtil.findNextLetter(grid, position, DIRECTIONS[i], word.charAt(letterLocations.length));
+            }
+        }
+        return null;
     }
 }
+module.exports = finderUtil;
