@@ -65,4 +65,14 @@ describe('Find words in the grid test', function() {
             assert.equal(finderUtil.findLetters(wordSearch.grid, {x:0,y:0}, '*****'), null);
         });
     });
+    describe('WordSearch method find', function() {
+        it('Given a word, return it\'s position in the grid', function(){
+            testConfig.words.forEach(function(word) {
+                expect(wordSearch.find(word)).to.eql(testConfig.wordLocations[word]);
+            });
+        });
+        it('If the given word is not in the grid, return null', function(){
+            expect(wordSearch.find('*****')).to.eql(null);
+        })
+    });
 });
