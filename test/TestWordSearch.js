@@ -7,6 +7,7 @@ const expect = chai.expect;
  */
 const testConfig = require('../test/config.json').simpleWordSearch;
 const WordSearch = require('../models/WordSearch');
+const finderUtil = require('../util/finderUtil');
 var wordSearch = new WordSearch(testConfig.inputFile);
 
 /**
@@ -14,22 +15,44 @@ var wordSearch = new WordSearch(testConfig.inputFile);
  */
 describe('Read from file test', function() {
     describe('Read words from first line', function() {
-        it('Number of words is equal to expected.', function() {
+        it('Number of words is equal to expected', function() {
             assert.equal(wordSearch.words.length, testConfig.words.length);
         });
-        it('All words match those expected.', function() {
+        it('All words match those expected', function() {
             expect(wordSearch.words).to.eql(testConfig.words);
         });
     });
     describe('Read grid from lines after first line', function() {
-        it('Number of grid rows equal those expected.', function() {
+        it('Number of grid rows equal those expected', function() {
             assert.equal(wordSearch.grid.length, testConfig.grid.length);
         });
-        it('Number of grid rows equal number of grid columns.', function() {
+        it('Number of grid rows equal number of grid columns', function() {
             assert.equal(wordSearch.grid.length, wordSearch.grid[0].length);
         });
-        it('All grid elements match those expected.', function() {
+        it('All grid elements match those expected', function() {
             expect(wordSearch.grid).to.eql(testConfig.grid);
+        });
+    });
+});
+describe('Find words in the grid test', function() {
+    describe('Test finderUtil function findNextLetter', function() {
+        it('Given the starting point of a word and a direction, next letter position is returned', function() {
+            testConfig.words.forEach(function(word) {
+                let position = testConfig.wordLocations[word][0],
+                nextLetter = testConfig.wordLocations[word][1],
+                direction = {x: nextLetter.x - position.x, y: nextLetter.y - position.y},
+                letter = word.charAt(1);
+                expect(finderUtil.findNextLetter(wordSearch.grid, position, direction, letter)).to.eql(nextLetter);
+            });
+        });
+        it('If next letter is not found, null is returned', function() {
+            testConfig.words.forEach(function(word) {
+                let position = testConfig.wordLocations[word][0],
+                nextLetter = testConfig.wordLocations[word][1],
+                direction = {x: nextLetter.x - position.x, y: nextLetter.y - position.y},
+                letter = '*'; //Something that it won't find.
+                assert.equal(finderUtil.findNextLetter(wordSearch.grid, position, direction, letter), null);
+            });
         });
     });
 });
