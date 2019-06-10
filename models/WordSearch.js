@@ -1,4 +1,5 @@
 const fs = require('fs');
+const gridUtil = require('../util/gridUtil');
 
 /**
  * @class WordSearch
@@ -30,7 +31,7 @@ class WordSearch {
             return row.split(',');
         })
         this.words = data[0];
-        this.grid = data.slice(1);
+        this.grid = gridUtil.translateGrid(data.slice(1));
     }
 }
 
