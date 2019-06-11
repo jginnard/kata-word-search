@@ -5,7 +5,7 @@ const expect = chai.expect;
 /**
  * Test Setup
  */
-const testConfig = require('../test/config.json').simpleWordSearch;
+const testConfig = require('../test/config.json').exampleWordSearch;
 const WordSearch = require('../models/WordSearch');
 const finderUtil = require('../util/finderUtil');
 var wordSearch = new WordSearch(testConfig.inputFile);
