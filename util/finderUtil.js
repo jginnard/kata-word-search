@@ -43,5 +43,5 @@ let finderUtil = {
         }
         return null;
     }
-}
+};
 module.exports = finderUtil;

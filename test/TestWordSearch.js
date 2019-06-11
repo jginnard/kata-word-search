@@ -77,7 +77,7 @@ describe('Find words in the grid test', function() {
         it('Word at the returned position matches the one that was searched', function() {
             testConfig.words.forEach(function(word) {
                 assert.equal(wordSearch.find(word).map(function(letter){
-                    return wordSearch.grid[letter.x][letter.y]
+                    return wordSearch.grid[letter.x][letter.y];
                 }).join(''), word);
             });
         });
@@ -100,11 +100,11 @@ describe('Displaying results test', function() {
             testConfig.words.forEach(function(word) {
                 assert.equal(wordSearch.getWordLocation(word), testConfig.wordLocationStrings[word]);
             });
-        })
+        });
     });
     describe('WordSearch method getAllWordLocations', function() {
         it('String returned by method getAllWordLocations matches expected', function() {
             assert.equal(wordSearch.getAllWordLocations(), Object.values(testConfig.wordLocationStrings).join('\n'));
-        })
+        });
     });
 });

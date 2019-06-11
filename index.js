@@ -7,5 +7,5 @@ fs.readdir(DATA_DIR, function(error, files){
         let wordSearch = new WordSearch(DATA_DIR + file);
         console.log('-------- Word Locations for ' + file + ' --------');
         console.log(wordSearch.getAllWordLocations());
-    })
+    });
 });
