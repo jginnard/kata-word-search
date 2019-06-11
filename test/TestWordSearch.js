@@ -80,4 +80,10 @@ describe('Find words in the grid test', function() {
             expect(wordSearch.findAllWords()).to.eql(testConfig.wordLocations);
         });
     });
+    describe('WordSearch constructor invokes method findAllWords', function() {
+        it('WordSearch property wordLocations contains the positions of all words', function() {
+            let tempWordSearch = new WordSearch(testConfig.inputFile);
+            expect(tempWordSearch.wordLocations).to.eql(testConfig.wordLocations);
+        });
+    });
 });

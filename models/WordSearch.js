@@ -18,6 +18,7 @@ class WordSearch {
         this.wordLocations = {};
         if (inputFile) {
             this.readFile(inputFile);
+            this.findAllWords();
         }
     }
 
