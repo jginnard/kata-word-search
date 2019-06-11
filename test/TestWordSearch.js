@@ -61,18 +61,23 @@ describe('Find words in the grid test', function() {
                 expect(finderUtil.findLetters(wordSearch.grid, testConfig.wordLocations[word][0], word)).to.eql(testConfig.wordLocations[word]);
             });
         });
-        it('If word can not be found at the given start position, null is returned', function(){
+        it('If word can not be found at the given start position, null is returned', function() {
             assert.equal(finderUtil.findLetters(wordSearch.grid, {x:0,y:0}, '*****'), null);
         });
     });
     describe('WordSearch method find', function() {
-        it('Given a word, return it\'s position in the grid', function(){
+        it('Given a word, return it\'s position in the grid', function() {
             testConfig.words.forEach(function(word) {
                 expect(wordSearch.find(word)).to.eql(testConfig.wordLocations[word]);
             });
         });
-        it('If the given word is not in the grid, return null', function(){
+        it('If the given word is not in the grid, return null', function() {
             expect(wordSearch.find('*****')).to.eql(null);
         })
+    });
+    describe('WordSearch method findAllWords', function() {
+        it('Positions for all found words match those expected', function() {
+            expect(wordSearch.findAllWords()).to.eql(testConfig.wordLocations);
+        });
     });
 });

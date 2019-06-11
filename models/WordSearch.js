@@ -15,6 +15,7 @@ class WordSearch {
     constructor(inputFile) {
         this.words = [];
         this.grid = [];
+        this.wordLocations = {};
         if (inputFile) {
             this.readFile(inputFile);
         }
@@ -24,7 +25,7 @@ class WordSearch {
      * Reads a file
      * @param {String} inputFileName
      */
-    readFile (inputFileName) {
+    readFile(inputFileName) {
         let fileContent = fs.readFileSync(inputFileName, {encoding: 'utf8'});
         let rows = fileContent.split(/\r?\n/);
         let data = rows.map(function(row){
@@ -39,7 +40,7 @@ class WordSearch {
      * @param {String} word - the word to search for in the grid
      * @returns {Array} letter positions
      */
-    find (word) {
+    find(word) {
         for(var y=0; y < this.grid.length; y++){
             for(var x=0; x < this.grid[y].length; x++){
                 let result = finderUtil.findLetters(this.grid, {x:x,y:y}, word);
@@ -49,6 +50,17 @@ class WordSearch {
             }
         }
         return null;
+    }
+    /**
+     * Find all words in the grid
+     * @returns {Object} words and their positions
+     */
+    findAllWords() {
+        this.wordLocations = {};
+        for (var i = 0; i < this.words.length; i++) {
+            this.wordLocations[this.words[i]] = this.find(this.words[i]);
+        }
+        return this.wordLocations;
     }
 }
 
