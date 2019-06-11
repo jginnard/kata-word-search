@@ -87,3 +87,10 @@ describe('Find words in the grid test', function() {
         });
     });
 });
+describe('Displaying results test', function() {
+    describe('WordSearch method getWordLocations', function() {
+        it('String returned by method getWordLocations matches expected', function() {
+            assert.equal(wordSearch.getWordLocations(), testConfig.getWordLocationsOutput);
+        })
+    });
+});

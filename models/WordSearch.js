@@ -31,7 +31,7 @@ class WordSearch {
         let rows = fileContent.split(/\r?\n/);
         let data = rows.map(function(row){
             return row.split(',');
-        })
+        });
         this.words = data[0];
         this.grid = gridUtil.translateGrid(data.slice(1));
     }
@@ -52,6 +52,7 @@ class WordSearch {
         }
         return null;
     }
+
     /**
      * Find all words in the grid
      * @returns {Object} words and their positions
@@ -62,6 +63,18 @@ class WordSearch {
             this.wordLocations[this.words[i]] = this.find(this.words[i]);
         }
         return this.wordLocations;
+    }
+
+    /**
+     * Get word locations as string
+     * @returns {String} word locations as a formatted string
+     */
+    getWordLocations(){
+        return Object.keys(this.wordLocations).map(function(word) {
+            return word + ': ' + this.wordLocations[word].map(function(letter) {
+                return '(' + letter.x + ',' + letter.y + ')';
+            }).join(',');
+        }.bind(this)).join('\n');
     }
 }
 
