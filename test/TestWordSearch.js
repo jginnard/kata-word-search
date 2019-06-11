@@ -95,9 +95,16 @@ describe('Find words in the grid test', function() {
     });
 });
 describe('Displaying results test', function() {
-    describe('WordSearch method getWordLocations', function() {
-        it('String returned by method getWordLocations matches expected', function() {
-            assert.equal(wordSearch.getWordLocations(), testConfig.getWordLocationsOutput);
+    describe('WordSearch method getWordLocation', function() {
+        it('String returned by method getWordLocation matches expected', function() {
+            testConfig.words.forEach(function(word) {
+                assert.equal(wordSearch.getWordLocation(word), testConfig.wordLocationStrings[word]);
+            });
+        })
+    });
+    describe('WordSearch method getAllWordLocations', function() {
+        it('String returned by method getAllWordLocations matches expected', function() {
+            assert.equal(wordSearch.getAllWordLocations(), Object.values(testConfig.wordLocationStrings).join('\n'));
         })
     });
 });

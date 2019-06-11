@@ -66,14 +66,23 @@ class WordSearch {
     }
 
     /**
-     * Get word locations as string
+     * Get word location as string
+     * @param {String} word for which the location will be returned
+     * @returns {String} word location as a formatted string
+     */
+    getWordLocation(word) {
+        return word + ': ' + this.wordLocations[word].map(function(letter) {
+            return '(' + letter.x + ',' + letter.y + ')';
+        }).join(',');
+    }
+
+    /**
+     * Get all word locations as a single string
      * @returns {String} word locations as a formatted string
      */
-    getWordLocations(){
+    getAllWordLocations() {
         return Object.keys(this.wordLocations).map(function(word) {
-            return word + ': ' + this.wordLocations[word].map(function(letter) {
-                return '(' + letter.x + ',' + letter.y + ')';
-            }).join(',');
+            return this.getWordLocation(word);
         }.bind(this)).join('\n');
     }
 }
