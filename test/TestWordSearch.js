@@ -73,7 +73,14 @@ describe('Find words in the grid test', function() {
         });
         it('If the given word is not in the grid, return null', function() {
             expect(wordSearch.find('*****')).to.eql(null);
-        })
+        });
+        it('Word at the returned position matches the one that was searched', function() {
+            testConfig.words.forEach(function(word) {
+                assert.equal(wordSearch.find(word).map(function(letter){
+                    return wordSearch.grid[letter.x][letter.y]
+                }).join(''), word);
+            });
+        });
     });
     describe('WordSearch method findAllWords', function() {
         it('Positions for all found words match those expected', function() {

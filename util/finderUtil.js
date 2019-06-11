@@ -5,8 +5,8 @@ let finderUtil = {
      * Find the next letter of the word
      * @param {Array} grid - the grid to search
      * @param {Object} position - current position - {x:0, y:0}
-     * @param {*} direction - direction from the current position - {x:0, y:0}
-     * @param {*} letter - Letter to search for
+     * @param {Object} direction - direction from the current position - {x:0, y:0}
+     * @param {String} letter - Letter to search for
      * @example findNextLetter({x:0,y:0}, {x:0,y:1}, 'E')
      */
     findNextLetter: function (grid, position, direction, letter) {
@@ -20,8 +20,17 @@ let finderUtil = {
         }
         return null;
     },
+    /**
+     * 
+     * @param {Array} grid - the grid to search
+     * @param {Object} startPosition - position to look for word at
+     * @param {String} word - the word to search for
+     */
     findLetters: function(grid, startPosition, word) {
         for(var i=0; i < DIRECTIONS.length; i++){
+            if (grid[startPosition.x][startPosition.y] !== word.charAt(0)) {
+                return null;
+            }
             let letterLocations = [];
             let position = startPosition;
             while(position != null) {
