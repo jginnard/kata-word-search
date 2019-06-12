@@ -121,4 +121,9 @@ describe('Displaying results test', function() {
             expect(wordSearch.getDisplayGrid()).to.eql(testConfig.displayGrid);
         });
     });
+    describe('WordSearch Method getWordLocationData', function() {
+        it('Object returned by getWordLocationData matches expected', function() {
+            expect(wordSearch.getWordLocationData()).to.eql(testConfig.wordLocations);
+        });
+    });
 });

@@ -97,6 +97,14 @@ class WordSearch {
     }
 
     /**
+     * Get the word location data
+     * @returns {object} wordLocations data object
+     */
+    getWordLocationData() {
+        return this.wordLocations;
+    }
+
+    /**
      * Get the display grid
      * @description Used to display the grid
      * @returns {Array} untranslated grid
