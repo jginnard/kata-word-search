@@ -8,7 +8,10 @@
   },
   "scripts": {
     "test": "mocha",
-    "start": "node index.js"
+    "start": "node index.js",
+    "prepare": "npm run build-javascript & npm run build-styles",
+    "build-javascript": "browserify ./public/javascript/app.js -o ./public/static/javascript/app.js",
+    "build-styles": "node-sass --include-path scss ./public/scss/style.scss   ./public/static/css/style.css"
   },
   "repository": {
     "type": "git",
@@ -21,7 +24,9 @@
   },
   "homepage": "https://github.com/jginnard/kata-word-search#readme",
   "dependencies": {
+    "browserify": "^16.2.3",
     "chai": "^4.2.0",
-    "mocha": "^6.1.4"
+    "mocha": "^6.1.4",
+    "node-sass": "^4.12.0"
   }
 }

@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <title>Word Search Kata Demo</title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel='stylesheet' href='./public/static/css/style.css' />
+</head>
+<body>
+    <div id="main" class="main">
+        <h1>Word Search Demo</h1>
+        <form action="wordSearchForm">
+            <div class="form-group">
+                <input id="inputFile" type="file">
+                <button class="btn btn-primary" type="button" id="solveWordSearch">Solve</button>
+            </div>
+        </form>
+        <div id="solvedGrid"></div>
+        <div id="wordPositions" class="solutions"></div>
+    </div>
+    <footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="./public/static/javascript/app.js" type="text/javascript"></script>
+    </footer>
+</body>
+</html>
