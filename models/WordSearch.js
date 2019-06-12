@@ -18,22 +18,30 @@ class WordSearch {
         this.wordLocations = {};
         if (inputFile) {
             this.readFile(inputFile);
-            this.findAllWords();
         }
     }
 
     /**
-     * Reads a file
+     * Reads a file to set words and grid arrays
      * @param {String} inputFileName
      */
     readFile(inputFileName) {
         let fileContent = fs.readFileSync(inputFileName, {encoding: 'utf8'});
-        let rows = fileContent.split(/\r?\n/);
+        this.readString(fileContent);
+    }
+
+    /**
+     * Reads a string to set words and grid arrays
+     * @param {String} input
+     */
+    readString(input) {
+        let rows = input.split(/\r?\n/);
         let data = rows.map(function(row){
             return row.split(',');
         });
         this.words = data[0];
         this.grid = gridUtil.translateGrid(data.slice(1));
+        this.findAllWords();
     }
 
     /**

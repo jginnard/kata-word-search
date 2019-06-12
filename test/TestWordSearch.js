@@ -1,3 +1,4 @@
+const fs = require('fs');
 const chai = require('chai');
 const assert = chai.assert;
 const expect = chai.expect;
@@ -31,6 +32,14 @@ describe('Read from file test', function() {
         });
         it('All grid elements match those expected', function() {
             expect(wordSearch.grid).to.eql(testConfig.grid);
+        });
+    });
+    describe('WordSearch method readString', function() {
+        it('Given file data as a string, sets words and grid arrays to expected values', function() {
+            let tempWordSearch = new WordSearch();
+            let fileContent = fs.readFileSync(testConfig.inputFile, {encoding: 'utf8'});
+            tempWordSearch.readString(fileContent);
+            expect(tempWordSearch.grid).to.eql(testConfig.grid);
         });
     });
 });
