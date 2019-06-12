@@ -15,6 +15,7 @@ class WordSearch {
     constructor(inputFile) {
         this.words = [];
         this.grid = [];
+        this.displayGrid = [];
         this.wordLocations = {};
         if (inputFile) {
             this.readFile(inputFile);
@@ -40,7 +41,8 @@ class WordSearch {
             return row.split(',');
         });
         this.words = data[0];
-        this.grid = gridUtil.translateGrid(data.slice(1));
+        this.displayGrid = data.slice(1);
+        this.grid = gridUtil.translateGrid(this.displayGrid);
         this.findAllWords();
     }
 
@@ -92,6 +94,15 @@ class WordSearch {
         return Object.keys(this.wordLocations).map(function(word) {
             return this.getWordLocation(word);
         }.bind(this)).join('\n');
+    }
+
+    /**
+     * Get the display grid
+     * @description Used to display the grid
+     * @returns {Array} untranslated grid
+     */
+    getDisplayGrid() {
+        return this.displayGrid;
     }
 }
 

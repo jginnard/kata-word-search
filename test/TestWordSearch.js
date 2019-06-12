@@ -116,4 +116,9 @@ describe('Displaying results test', function() {
             assert.equal(wordSearch.getAllWordLocations(), Object.values(testConfig.wordLocationStrings).join('\n'));
         });
     });
+    describe('WordSearch method getDisplayGrid', function() {
+        it('Array returned by method getDisplayGrid matches expected', function () {
+            expect(wordSearch.getDisplayGrid()).to.eql(testConfig.displayGrid);
+        });
+    });
 });
