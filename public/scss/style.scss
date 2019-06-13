@@ -1,5 +1,25 @@
 .main {
+    margin: 40px;
+    h2 {
+        font-size: 22px;
+    }
     .solutions {
         white-space: pre-wrap;
+        margin-top: 40px;
+    }
+    .grid {
+        display: inline-block;
+        font-family: monospace;
+        white-space: pre;
+        font-size: large;
+        letter-spacing: 15.2px;
+        position: relative;
+    }
+    span.highlight {
+        position: absolute;
+        background: #0040858a;
+        height: 16px;
+        border-radius: 8px;
+        transform-origin: center left;
     }
 }
